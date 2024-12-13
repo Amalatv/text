@@ -17,7 +17,15 @@ import { setAuthUser } from "@/store/authSlice";
 import { useRouter } from "next/navigation";
 import { RootState } from "@/store/store";
 
-const verify = () => {
+interface ApiError {
+  response: {
+    data: {
+      message: string;
+    };
+  };
+}
+
+const Verify = () => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const [loading, setLoading] = useState(false);
@@ -79,7 +87,7 @@ const verify = () => {
       dispatch(setAuthUser(verifiedUser));
       toast.success("Verification Successfull");
       router.push("/");
-    } catch (error: any) {
+    } catch (error: ApiError) {
       toast.error(error.response.data.message);
     } finally {
       setLoading(false);
@@ -93,7 +101,7 @@ const verify = () => {
         withCredentials: true,
       });
       toast.success("New Otp is send to your email");
-    } catch (error: any) {
+    } catch (error: ApiError) {
       toast.error(error.response.data.message);
     } finally {
       setLoading(false);
@@ -164,4 +172,4 @@ const verify = () => {
   );
 };
 
-export default verify;
+export default Verify;
