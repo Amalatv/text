@@ -26,7 +26,7 @@ export default function Home() {
       <BackgroundImage />
       <div className="bg-black opacity-50 w-full h-svh absolute"></div>
       <header className="relative h-svh w-full mx-auto">
-        <div className="w-full shadow-[0_0_10px_#00000042]">
+        <div className="w-full shadow-xl bg-black bg-opacity-50">
           <div className="w-full container mx-auto flex items-center justify-between p-3 ">
             <div className="text-2xl font-bold">
               <Image 
