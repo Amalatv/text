@@ -24,8 +24,9 @@ export default function Home() {
   return (
     <>
       <BackgroundImage />
-      <header className="h-svh w-full mx-auto">
-        <div className="w-full shadow-xl shadow-gray-800">
+      <div className="bg-black opacity-50 w-full h-svh absolute"></div>
+      <header className="relative h-svh w-full mx-auto">
+        <div className="w-full shadow-[0_0_10px_#00000042]">
           <div className="w-full container mx-auto flex items-center justify-between p-3 ">
             <div className="text-2xl font-bold">
               <Image 

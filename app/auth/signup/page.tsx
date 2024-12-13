@@ -79,7 +79,7 @@ const Signup = () => {
 
   return (
     <section>
-      <div className="mx-auto container p-4 ">
+      <div className="mx-auto container p-4 flex h-screen items-center justify-center">
         <div className="bg-white w-full max-w-md py-5 px-10 mx-auto rounded-xl shadow-2xl">
           <div className="text-4xl w-20 h-20 mx-auto flex items-center justify-center p-5 rounded-full bg-slate-100 text-blue-600">
             <Image
