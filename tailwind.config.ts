@@ -12,6 +12,12 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundImage: {
+        'home-img': "url('/img/project_bg.jpg')",
+      },
+      logo:{
+        'logo-img':"url('/img/luminotech2.svg)",
+      },
     },
   },
   plugins: [],

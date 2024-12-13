@@ -2,7 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+body {
+
+  /* Remove up and down arrows for numeric input in all browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* For Firefox */
+}
+
+
+  .Toastify__toast {
+    font-size: 14px; /* Adjust to desired size */
+    line-height: 1.5;
+  }
+  
+  .Toastify__toast-body {
+    margin: 0;
+  }
+  
+  .Toastify__close-button {
+    font-size: 12px; /* Ensure the close button is appropriately sized */
+  }
+}
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -18,4 +45,4 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
