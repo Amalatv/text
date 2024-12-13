@@ -47,9 +47,12 @@ const Login = () => {
 
       dispatch(setAuthUser(user));
       router.push("/");
-    } catch (error: any) {
-      toast.error(error.response.data.message);
-      console.log(error);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error) && error.response) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('An error occurred during login');
+      }
     } finally {
       setLoading(false);
     }

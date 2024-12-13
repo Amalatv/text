@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
 import axios from "axios";
@@ -45,8 +44,12 @@ const ResetPassword = () => {
       toast.success("Password Reset Successful");
 
       router.push("/auth/login");
-    } catch (error: any) {
-      toast.error(error.response.data.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error) && error.response) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('An error occurred while resetting password');
+      }
     } finally {
       setLoading(false);
     }

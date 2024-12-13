@@ -25,7 +25,7 @@ interface ApiError {
   };
 }
 
-const Verify = () => {
+const VerifyComponent = () => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const [loading, setLoading] = useState(false);
@@ -37,7 +37,7 @@ const Verify = () => {
   useEffect(() => {
     if (!user) {
       toast.warning("You must sign up first!");
-      router.replace("/auth/signup"); // Redirect to the signup page
+      router.replace("/auth/signup");
     }
   }, [user, router]);
 
@@ -85,10 +85,14 @@ const Verify = () => {
 
       const verifiedUser = response.data.data.user;
       dispatch(setAuthUser(verifiedUser));
-      toast.success("Verification Successfull");
+      toast.success("Verification Successful");
       router.push("/");
-    } catch (error: ApiError) {
-      toast.error(error.response.data.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error) && error.response?.data?.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Failed to verify OTP. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -100,9 +104,13 @@ const Verify = () => {
       await axios.post(`${API_URL}/users/resend-otp`, null, {
         withCredentials: true,
       });
-      toast.success("New Otp is send to your email");
-    } catch (error: ApiError) {
-      toast.error(error.response.data.message);
+      toast.success("OTP resent successfully");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error) && error.response?.data?.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Failed to resend OTP. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -172,4 +180,4 @@ const Verify = () => {
   );
 };
 
-export default Verify;
+export default VerifyComponent;

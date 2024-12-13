@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-import Avatar from "react-avatar";
-import { LuUser } from "react-icons/lu";
 import axios from "axios";
 import { API_URL } from "@/server";
 import { setAuthUser } from "@/store/authSlice";
@@ -27,7 +25,13 @@ export default function Home() {
       <div className="w-full shadow-xl shadow-gray-800">
         <div className="w-full container mx-auto flex items-center justify-between p-3 ">
           <div className="text-2xl font-bold">
-            <img className="w-60 h-15" src="/img/luminotech2.svg" />
+            <Image 
+              src="/img/luminotech2.svg" 
+              alt="Luminotech Logo"
+              width={240}
+              height={60}
+              priority
+            />
           </div>
 
           <div className="flex items-center gap-7 cursor-pointer">
